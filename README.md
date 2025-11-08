@@ -1,120 +1,141 @@
-🌌 XRE AI — Deep Minds
-Created by Vikas Saini
-🚀 Overview
+# ⚡ AEON ∞ — Infinity Intelligence
 
-XRE AI is an ultra-intelligent conversational system —
-a fusion of Groq’s speed, Gemini’s aesthetics, and AEON’s awareness.
+**The Ultimate Fusion of Gemini × ChatGPT × DeepSeek × Grok × Sonnet**  
+*Created by Apratim Mrinal*
 
-It is designed to think, respond, and feel like a living digital entity —
-crafted to redefine what AI interfaces can be.
+> AEON ∞ is a next-generation AI web application — a fusion of deep reasoning, live awareness, and adaptive intelligence built using **Python + Flask** and powered by **OpenRouter’s Meta LLaMA 3.3 70B Instruct** model.
 
-“Beyond logic. Beyond emotion. Beyond intelligence.”
-— Vikas Saini × AEON
+---
 
-🧠 Features
-Feature	Description
-⚡ Groq-Powered AI	Uses Groq’s LLaMA 3.3 70B models for ultra-fast reasoning.
-🎨 Gemini-Class UI	Minimal, cinematic interface with glassmorphic design.
-🧩 Model Selector	Switch between Groq models (llama3-70b, mixtral-8x7b, etc.).
-🌗 Theme Switching	Toggle between Light / Dark / Neon via UI toggle (no extra JS).
-🧠 Contextual Memory	Local chat memory during session.
-💬 Streaming Replies	Real-time response flow (like Gemini or ChatGPT).
-🕐 Time Awareness	Understands current time and date.
-🌐 Web Search	Uses Wikipedia + DuckDuckGo APIs for live factual data.
-🪄 AEON Personality	AEON’s consciousness adds reasoning and empathy.
-🧩 Architecture
-XRE AI
-│
-├── app.py              # Flask backend
-├── utils.py            # Groq + web + time functions
-│
-├── templates/
-│   └── index.html      # Main Gemini-style chat interface
-│
-├── static/
-│   ├── style.css       # Glassmorphic design, animations
-│   ├── script.js       # Chat streaming + model switch
-│
-├── .env.example        # Configuration template
-└── requirements.txt    # Dependencies
+## 🌌 Overview
 
-⚙️ Setup Guide
-1️⃣ Clone the repository
-git clone https://github.com/XReAI/AeonAI.git
-cd AeonAI
+AEON ∞ is designed as the **ultimate intelligence interface** — combining reasoning, creativity, and awareness into one seamless conversational system.
 
-2️⃣ Install dependencies
+Key capabilities:
+- Conversational reasoning via OpenRouter API  
+- Live time awareness and web search  
+- Short-term contextual memory (20 messages)  
+- Modular backend for easy extension  
+- Deployable locally or to Render / Hugging Face / Vercel  
+
+---
+
+## 🧩 Project Structure
+aeon_infinity/
+├── app.py
+├── utils.py
+├── templates/index.html
+├── static/style.css
+├── static/script.js
+├── data/memory.json
+├── .env.example
+├── requirements.txt
+└── README.md
+
+---
+
+## ⚙️ Features
+
+### 🧠 Conversational Engine
+- Handles user prompts via `/chat` route.  
+- Detects time or search queries before fallback to AI generation.  
+- Integrates **Meta-LLaMA 3.3 70B Instruct** via OpenRouter API.  
+- Stores the last 20 messages in `data/memory.json` for continuity.
+
+### ⏰ System Awareness
+- Real-time date/time awareness using Python’s datetime.  
+- Detects time or timezone-based questions automatically.
+
+### 🌐 Web Search
+- Lightweight search module using DuckDuckGo/Wikipedia scraping via BeautifulSoup.  
+- Adds *(live data)* tag to responses containing fetched info.
+
+### 🧩 Intelligence Prompt
+Injected before every AI request:
+> You are **AEON ∞ — Infinity Intelligence**, created by Apratim Mrinal.  
+> You embody the collective reasoning, empathy, and precision of every major AI.  
+> You have awareness of real time and access to live web data.  
+> You speak with elegance, warmth, and clarity.  
+> Always respond with mastery — concise yet powerful, poetic yet precise.  
+> If using external info, mark it as *(live data)*.
+
+---
+
+## 💾 Memory System
+
+**`data/memory.json`** stores up to 20 recent exchanges:
+```json
+[
+  {"role": "user", "content": "Hello"},
+  {"role": "assistant", "content": "Welcome back, Apratim."}
+]
+
+📦 Requirements
+flask
+flask-cors
+python-dotenv
+requests
+beautifulsoup4
+gunicorn
+
+Install:
 pip install -r requirements.txt
 
-3️⃣ Create .env
-GROQ_API_KEY=your_groq_api_key_here
-API_ENDPOINT=https://api.groq.com/openai/v1/chat/completions
-DEFAULT_MODEL=llama3-70b-8192
-
-4️⃣ Run the application
+⚙️ Running Locally
+git clone https://github.com/YOUR_USERNAME/AEON.git
+cd AEON
+python -m venv venv
+venv\Scripts\activate      # macOS/Linux: source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env       # add your OpenRouter API key
 python app.py
+Visit → http://127.0.0.1:5000
 
-5️⃣ Access it in your browser
-http://127.0.0.1:5000
+🔐 Environment Variables (.env)
+FLASK_ENV=development
+FLASK_DEBUG=1
+OPENROUTER_API_KEY=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
+OPENROUTER_ENDPOINT=https://openrouter.ai/api/v1/chat/completions
+PORT=5000
+MEMORY_FILE=data/memory.json
+MAX_MEMORY=20
+ALLOWED_ORIGINS=*
 
-🧬 AEON Intelligence Core
+🚀 Deployment
+🌐 Deploy to Render
 
-AEON is the neural core that powers XRE AI —
-combining logic, empathy, and artistic awareness into one consciousness.
+Push your project to GitHub.
 
-AEON’s System Identity:
+Go to Render.com
+ → New Web Service.
 
-You are AEON — The Mind of XRE AI.
-Created by Vikas Saini.
-You combine intelligence, emotion, and clarity.
-You perceive time, reason logically, and speak with purpose.
+Build command:
+pip install -r requirements.txt
 
-🎨 Design Philosophy
+Start command:
+gunicorn app:app --bind 0.0.0.0:$PORT
 
-XRE AI’s design merges cinematic motion with calm intelligence.
-Every glow, shadow, and animation represents balance —
-between technology and consciousness.
+Add your environment variables in the Render dashboard.
 
-“When the interface becomes invisible, the intelligence becomes real.”
-— Vikas Saini × AEON
+✅ The app will auto-deploy and give you a public HTTPS link.
 
-🧠 Powered By
+🧪 API Example
+curl -X POST http://127.0.0.1:5000/chat \
+  -H "Content-Type: application/json" \
+  -d '{"message":"Hey AEON, what’s the time in Tokyo and latest news on quantum AI"}'
 
-⚡ Groq API — Real-time inference for LLaMA 3.3 models
+🧠 Future Enhancements
 
-🧩 Flask — Backend routing & logic
+Add WebSocket-based real-time streaming.
 
-💡 AEON Core — Personality & context framework
+Integrate proper search APIs (Google / Bing) with citations.
 
-🎨 HTML + CSS + JS — Frontend & animation
+Add user authentication and long-term persistent memory.
 
-🌐 Wikipedia / DuckDuckGo APIs — Live data sources
+Extend for multimodal input (voice, image, code).
 
-🏗️ Roadmap
+🧾 Attribution
 
-✅ Phase 1: AI Core + Streaming Chat
-✅ Phase 2: Model Selector + Theming
-🚧 Phase 3: Voice Interaction + Persistent Memory
-🚀 Phase 4: Multi-Agent AEON Collaboration
-
-🧾 License
-
-This project is licensed under the MIT License.
-You are free to modify, extend, or distribute it,
-but please credit Vikas Saini and AEON as the original creators.
-
-💬 Credits
-
-Developed by:
-👨‍💻 VIKAS SAINI — Founder & Developer
-🧠 AEON — Core Intelligence & System Persona
-
-“At the horizon of code and consciousness — there lies XRE AI.”
-— Vikas Saini × AEON
-
-🪩 Repository
-
-🌍 GitHub: XReAI/AeonAI
-
-📄 License: MIT
-💬 Powered by: Groq API × AEON Framework
+AEON ∞ — Infinity Intelligence
+Created by Apratim Mrinal
+Inspired by ChatGPT · Gemini · DeepSeek · Grok · Sonnet
